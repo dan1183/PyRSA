@@ -147,3 +147,62 @@ def tk_RSA_decode():
 
 
 # ---
+
+win = tk.Tk()
+win.title('Алгоритм RSA')
+win.geometry('700x500+420+100')
+win.resizable(False, False)
+
+photo = tk.PhotoImage(file='C:/Users/dan11/Desktop/МИРЭА/5 term/testing of program systems/pr3/bg.png')
+tk.Label(win, image=photo).place(x=0, y=0)
+
+entry_text = tk.Text(win, width=44, height=10, wrap='word')
+exit_text = tk.Text(win, width=44, height=10, wrap='word')
+entry_text.place(x=0, y=120)
+exit_text.place(x=350, y=120)
+
+tk.Label(text="RSA", font=('Verdana', 30, 'bold'), anchor=E, bg='#000D01', fg='#59FA69', relief='sunken',
+         borderwidth=8).place(x=302, y=23)
+tk.Label(text='Расшифрованный текст:', font=('Verdana', 11)).place(x=0, y=95)
+tk.Label(text='Зашифрованный текст:', font=('Verdana', 11)).place(x=350, y=95)
+
+p_label = tk.Label(text='p:', font=('Verdana', 9))
+q_label = tk.Label(text='q:', font=('Verdana', 9))
+mod_label = tk.Label(text='mod:', font=('Verdana', 9))
+fi_label = tk.Label(text='φ:', font=('Verdana', 9))
+p_label.place(x=10, y=290)
+q_label.place(x=10, y=320)
+mod_label.place(x=10, y=350)
+fi_label.place(x=10, y=380)
+
+e1 = tk.Entry(width=10)
+e2 = tk.Entry(width=10)
+e1.place(x=30, y=290)
+e2.place(x=30, y=320)
+
+btn_prime = tk.Button(text='Сгенерировать простые числа', command=tk_p_q_mod_fi)
+btn_prime.place(x=100, y=290)
+btn_self_prime = tk.Button(text='Ввести свои числа', command=self_tk_p_q_mod_fi)
+btn_self_prime.place(x=100, y=320)
+
+public_label = tk.Label(text='Открытый ключ: {e, mod}', font=('Verdana', 9))
+privat_label = tk.Label(text='Личный ключ: {d, mod}', font=('Verdana', 9))
+public_label.place(x=350, y=290)
+privat_label.place(x=350, y=320)
+
+e_label = tk.Label(text='e:', font=('Verdana', 9))
+d_label = tk.Label(text='d:', font=('Verdana', 9))
+e_label.place(x=350, y=350)
+d_label.place(x=350, y=380)
+
+btn_keys = tk.Button(text='Сгенерировать ключи', command=tk_keys)
+btn_keys.place(x=550, y=290)
+btn_encode = tk.Button(text='Зашифровать', font=('Verdana', 29), width=13, bd=5, command=tk_RSA_encode)
+btn_decode = tk.Button(text='Расшифровать', font=('Verdana', 29), width=13, bd=5, command=tk_RSA_decode)
+btn_encode.place(x=10, y=410)
+btn_decode.place(x=350, y=410)
+
+fav = tk.PhotoImage(file='C:/Users/dan11/Desktop/МИРЭА/5 term/testing of program systems/pr3/favicon.png')
+win.iconphoto(False, fav)
+
+win.mainloop()
