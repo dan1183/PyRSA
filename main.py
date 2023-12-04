@@ -48,3 +48,28 @@ def find_d(e, fi):
     while (d * e) % fi != 1:
         d += 1
     return d
+
+
+def RSA_encode(message, e, mod):
+    message_in_ASCII = []
+    for i in message:
+        message_in_ASCII.append(ord(i))
+        # message_in_ASCII.reverse()
+
+    encrypted_message = []
+    for i in message_in_ASCII:
+        a = i ** e % mod
+        encrypted_message.append(a)
+    return encrypted_message
+
+
+def RSA_decode(encrypted_message, d, mod):
+    decrypted_message = []
+    for i in encrypted_message:
+        a = i ** d % mod
+        decrypted_message.append(a)
+
+    message = []
+    for i in decrypted_message:
+        message.append(chr(i))
+    return message
